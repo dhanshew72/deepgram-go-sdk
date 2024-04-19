@@ -1,4 +1,4 @@
-module github.com/alexanderyoung/deepgram-go-sdk
+module github.com/dhanshew72/deepgram-go-sdk
 
 go 1.18
 
