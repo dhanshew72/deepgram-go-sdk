@@ -52,16 +52,9 @@ func (dg *Client) LiveTranscription(options LiveTranscriptionOptions) (*websocke
 		"Authorization": []string{"token " + dg.ApiKey},
 		"X-DG-Agent":    []string{dgAgent},
 	}
-
-	c, resp, err := websocket.DefaultDialer.Dial(u.String(), header)
-
+	c, resp, err := GetClient(header, u)
 	if err != nil {
-		if resp != nil {
-			log.Printf("handshake failed with status %s", resp.Status)
-		} else {
-			log.Printf("handshake failed with no response")
-		}
-		log.Fatal("dial:", err)
+		log.Fatal("unable to create websocket client", err)
 	}
 	return c, resp, nil
 }
